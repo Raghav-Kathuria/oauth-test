@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<table class="table">
+    <thead>
+      <tr>
+        <th class="col-md-3">Property</th>
+        <th class="col-md-3">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Status</td>
+        <td id="status"></td>
+      </tr>
+      <tr>
+        <td>Access Token</td>
+        <td class="col-md-3" id="access-token"></td>
+      </tr>
+      <tr>
+        <td>User ID</td>
+        <td id="userId"></td>
+      </tr>
+      <tr>
+        <td>Expires In</td>
+        <td id="expiresIn"></td>
+      </tr>
+      <tr>
+        <td>Signed Request</td>
+        <td id="signedRequest"></td>
+      </tr>
+      <tr>
+        <td>Re-authorize required In</td>
+        <td id="reauthorizeTime"></td>
+      </tr>
+      <tr>
+        <td>Data Access Expiration Time</td>
+        <td id="dataExpirationTime"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+    var fbResponse = JSON.parse(sessionStorage.getItem("fbResponse"));
+    document.getElementById("status").innerHTML = fbResponse.status;
+    document.getElementById("access-token").innerHTML = fbResponse.authResponse.accessToken;
+    document.getElementById("userId").innerHTML = fbResponse.authResponse.userId;
+    document.getElementById("expiresIn").innerHTML = fbResponse.authResponse.expiresIn;
+    document.getElementById("signedRequest").innerHTML = fbResponse.authResponse.signedRequest;
+    document.getElementById("reauthorizeTime").innerHTML = fbResponse.authResponse.reauthorize_required_in;
+    document.getElementById("dataExpirationTime").innerHTML = fbResponse.authResponse.data_access_expiration_time;
+</script>
+</html>                            
